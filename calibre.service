@@ -1,0 +1,16 @@
+[Unit]
+Description=Calibre Service
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/var/run/calibre-server.pid
+ExecStart=/usr/bin/calibre-server \
+        --log=/home/plexadmin/Calibre/Logs/calibre.log \
+        --daemonize \
+        --user=$USERNAME \
+        --port=8080 \
+        --pidfile=/var/run/calibre-server.pid \
+
+[Install]
+WantedBy=multi-user.target
